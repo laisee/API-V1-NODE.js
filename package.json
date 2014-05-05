@@ -1,0 +1,11 @@
+{
+  "name": "CoinMkt.API.Sample.NodeJs",
+  "version": "0.0.0",
+  "description": "CoinMkt.API.Sample.NodeJs",
+  "main": "app.js",
+  "author": {
+    "name": "Maxim Radetsky",
+    "email": ""
+  },
+  "dependencies": {}
+}
