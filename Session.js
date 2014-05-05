@@ -8,10 +8,10 @@ var sessionToken = "";
 
 exports.SignIn = function (tradeLevel, callback) {
     console.log("SignIn request ");
-    var URLSigninKey = config.Config.BaseURL + "session/signinkey" + "/" + config.Config.ApiKey;
+    var URLSigninKey = config.Config.BaseURL + "session/signinkey/" + config.Config.ApiKey;
     base.Request("GET", URLSigninKey, null, null, function (result)
     {
-        var URLSessionToken = config.Config.BaseURL + "session/new" + "/" + config.Config.ApiKey + "/" + tradeLevel;
+        var URLSessionToken = config.Config.BaseURL + "session/new/" + config.Config.ApiKey + "/" + tradeLevel;
         var key = cryptojs.enc.Utf8.parse(config.Config.ApiSecret);
         console.log("Secret(bytes) :", key.toString());
 

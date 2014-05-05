@@ -6,7 +6,7 @@ var cryptojs = require("crypto-js");
 var crypto = require("crypto");
 
 exports.MoveCoin = function (symbol, amount, apiPin, usersThirdPartyAccountId, callback) {
-    var URL = config.Config.BaseURL + "thirdparty/movecoinkey" + "/" + session.GetSessionToken() + "/" + usersThirdPartyAccountId;
+    var URL = config.Config.BaseURL + "thirdparty/movecoinkey/" + session.GetSessionToken() + "/" + usersThirdPartyAccountId;
     console.log("MoveCoin request ");
     base.Request("GET", URL, null, null, function (result)
     {
@@ -28,7 +28,7 @@ exports.MoveCoin = function (symbol, amount, apiPin, usersThirdPartyAccountId, c
             decrypted.toString(cryptojs.enc.Utf8) + config.Config.SecondaryKey + hashedPin, "utf8")).digest('base64');
         
         console.log('hash : ' + hash);
-        var sendCoinURL = config.Config.BaseURL + "thirdparty/movecoin" + "/" + session.GetSessionToken() + "/"
+        var sendCoinURL = config.Config.BaseURL + "thirdparty/movecoin/" + session.GetSessionToken() + "/"
         + symbol + "/" + amount + "?hashedSendCoinKey=" + encodeURIComponent(hash);
         base.Request("POST", sendCoinURL, null, null, function (data) {
             callback(data);

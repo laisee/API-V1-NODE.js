@@ -6,7 +6,7 @@ var cryptojs = require("crypto-js");
 var crypto = require("crypto");
 
 exports.SendCoin = function (symbol, amount, destinationAddress, apiPin, addTxFee, callback) {
-    var URL = config.Config.BaseURL + "wallet/sendcoinkey/new" + "/" + session.GetSessionToken();
+    var URL = config.Config.BaseURL + "wallet/sendcoinkey/new/" + session.GetSessionToken();
     console.log("SendCoin request ");
     base.Request("POST", URL, null, null, function (result)
     {
@@ -32,7 +32,7 @@ exports.SendCoin = function (symbol, amount, destinationAddress, apiPin, addTxFe
         else
             addUrlSerment = 0;
         console.log('hash : ' + hash);
-        var sendCoinURL = config.Config.BaseURL + "wallet/sendcoin" + "/" + session.GetSessionToken() + "/"
+        var sendCoinURL = config.Config.BaseURL + "wallet/sendcoin/" + session.GetSessionToken() + "/"
         + symbol + "/" + amount + "/" + destinationAddress + "/" + addUrlSerment + "?hashedSendCoinKey=" + encodeURIComponent(hash);
         base.Request("POST", sendCoinURL, null, null, function (data) {
             callback(data);
